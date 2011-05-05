@@ -75,8 +75,13 @@ class Kohana_URL {
 			}
 			else
 			{
+				$domain = '';
+				
 				// Attempt to use HTTP_HOST and fallback to SERVER_NAME
-				$domain = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : $_SERVER['SERVER_NAME'];
+				if(isset($_SERVER['HTTP_HOST']) OR isset($_SERVER['SERVER_NAME']))
+				{
+					$domain = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : $_SERVER['SERVER_NAME'];
+				}
 			}
 
 			// Add the protocol and domain to the base URL
